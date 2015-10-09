@@ -68,8 +68,9 @@ action_mwl = %(banaction)s[name=%(__name__)s, port="%(port)s", protocol="%(proto
                %(mta)s-whois-lines[name=%(__name__)s, dest="%(destemail)s", logpath=%(logpath)s, chain="%(chain)s"]
 
 <% unless node['fail2ban']['actions'].empty? %>
+# Custom actions
 <% node['fail2ban']['actions'].each do |action, value| %>
-action_<%= action => = <%= value.join("\n    ") %>
+action_<%= action %> = <%= value.join("\n    ") %>
 <% end %>
 <% end %>
 
