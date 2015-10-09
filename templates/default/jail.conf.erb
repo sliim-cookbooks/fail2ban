@@ -67,6 +67,12 @@ action_mw = %(banaction)s[name=%(__name__)s, port="%(port)s", protocol="%(protoc
 action_mwl = %(banaction)s[name=%(__name__)s, port="%(port)s", protocol="%(protocol)s", chain="%(chain)s"]
                %(mta)s-whois-lines[name=%(__name__)s, dest="%(destemail)s", logpath=%(logpath)s, chain="%(chain)s"]
 
+<% unless node['fail2ban']['actions'].empty? %>
+<% node['fail2ban']['actions'].each do |action, value| %>
+action_<%= action => = <%= value.join("\n    ") %>
+<% end %>
+<% end %>
+
 # Choose default action.  To change, just override value of 'action' with the
 # interpolation to the chosen action shortcut (e.g.  action_mw, action_mwl, etc) in jail.local
 # globally (section [DEFAULT]) or per specific section
@@ -104,4 +110,3 @@ action = <%= param['action'] %>
 <% end %>
 
 <% end %>
-

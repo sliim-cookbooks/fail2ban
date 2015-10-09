@@ -44,6 +44,10 @@ default['fail2ban']['chain'] = 'INPUT'
 # format: { name: { failregex: '', ignoreregex: ''} }
 default['fail2ban']['filters'] = {}
 
+# custom actions
+# format: { name: [action1, action2]}
+default['fail2ban']['actions'] = {}
+
 case node['platform_family']
 when 'rhel', 'fedora'
   default['fail2ban']['auth_log'] = '/var/log/secure'
